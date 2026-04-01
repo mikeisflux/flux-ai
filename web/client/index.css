@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  :root {
+    --accent: #7c3aed;
+    --accent-hover: #6d28d9;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+}
+
+@layer components {
+  .btn {
+    @apply px-3 py-1.5 rounded-lg text-sm font-medium transition-colors cursor-pointer;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-violet-600 hover:bg-violet-700 text-white;
+  }
+  .btn-ghost {
+    @apply btn hover:bg-gray-800 text-gray-300 hover:text-white;
+  }
+  .btn-danger {
+    @apply btn bg-red-600/20 hover:bg-red-600/40 text-red-400 hover:text-red-300;
+  }
+  .input {
+    @apply w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm
+           text-gray-100 placeholder-gray-500 focus:outline-none focus:border-violet-500
+           focus:ring-1 focus:ring-violet-500/50 transition-colors;
+  }
+
+  /* Code blocks */
+  .code-block {
+    @apply bg-gray-900 rounded-lg overflow-hidden border border-gray-800 my-2;
+  }
+  .code-block pre {
+    @apply p-4 overflow-x-auto text-sm font-mono text-gray-300 m-0;
+  }
+  .code-block-header {
+    @apply flex items-center justify-between px-4 py-2 bg-gray-800/80 border-b border-gray-700
+           text-xs text-gray-400;
+  }
+
+  /* Message bubbles */
+  .message-user {
+    @apply bg-violet-600/20 border border-violet-500/30 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%] ml-auto;
+  }
+  .message-assistant {
+    @apply bg-gray-800/60 border border-gray-700/50 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[95%];
+  }
+  .message-tool {
+    @apply bg-gray-900/80 border border-gray-700/40 rounded-lg px-3 py-2 text-xs font-mono
+           text-gray-400 max-w-full;
+  }
+
+  /* Typing indicator */
+  .typing-dot {
+    @apply w-2 h-2 bg-violet-400 rounded-full animate-bounce;
+  }
+}
+
+/* Markdown prose */
+.prose { @apply text-gray-200 leading-relaxed; }
+.prose h1, .prose h2, .prose h3 { @apply font-semibold text-white mt-4 mb-2; }
+.prose h1 { @apply text-xl; }
+.prose h2 { @apply text-lg; }
+.prose h3 { @apply text-base; }
+.prose p { @apply mb-3; }
+.prose ul, .prose ol { @apply pl-5 mb-3; }
+.prose li { @apply mb-1; }
+.prose ul li { @apply list-disc; }
+.prose ol li { @apply list-decimal; }
+.prose strong { @apply font-semibold text-white; }
+.prose em { @apply italic; }
+.prose code { @apply bg-gray-800 px-1.5 py-0.5 rounded text-violet-300 text-sm font-mono; }
+.prose a { @apply text-violet-400 hover:text-violet-300 underline; }
+.prose blockquote { @apply border-l-4 border-violet-500 pl-4 italic text-gray-400; }
+.prose hr { @apply border-gray-700 my-4; }
